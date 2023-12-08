@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formularz</title>
+</head>
+<body>
+    <div class="formularz">
+        <form onsubmit="emailsend(); reset(); return false">
+            <h3>Formularz zgłoszeniowy</h3>
+            <input type="text" id="imie" placeholder="TWOJ NICK" required>
+            <input type="text" id="email" placeholder="TWOJ email" required>
+            <textarea id="wiadomosc" rows="4" placeholder="WIADOMOSC" required></textarea>
+            <button type="submit">WYSLIJ</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function emailsend(){
+            Email.send({
+    Host : "smtp.gmail.com",
+    Username : "s.motionverse@gmail.com",
+    Password : "uezx dwob qkij inku",
+    To : 's.motionverse@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "This is the subject",
+    Body : "NICK: " + document.getElementById("imie").value
+            + "<br> Email:" + document.getElementById("email").value
+            + "<br> WIADOMOSC:" + document.getElementById("wiadomosc").value
+}).then(
+  message => alert(message)
+);
+}
+    </script>
+</body>
+</html>
